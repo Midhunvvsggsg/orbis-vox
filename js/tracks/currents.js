@@ -44,7 +44,7 @@ export const currentsPersonality = {
 
       // Long ambient attack and release
       gain.gain.setValueAtTime(0, now);
-      gain.gain.linearRampToValueAtTime(0.08, now + 0.8);
+      gain.gain.linearRampToValueAtTime(0.2, now + 0.5);
       gain.gain.exponentialRampToValueAtTime(0.0001, now + 3.2);
 
       let lastNode = gain;

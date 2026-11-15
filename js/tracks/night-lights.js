@@ -43,8 +43,8 @@ export const nightLightsPersonality = {
 
     points.forEach((pt, idx) => {
       // Note probability scaled to luminance and litFraction
-      const probThreshold = Math.max(0.25, lit * 1.5);
-      if (pt.luminance > 0.18 && Math.random() <= probThreshold) {
+      const probThreshold = Math.max(0.35, lit * 1.5);
+      if (pt.luminance > 0.04 && Math.random() <= probThreshold) {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         const filter = ctx.createBiquadFilter ? ctx.createBiquadFilter() : null;
@@ -58,11 +58,11 @@ export const nightLightsPersonality = {
         osc.type = 'triangle';
         osc.frequency.setValueAtTime(freq, now);
 
-        // Pluck envelope: quick attack, fast exponential decay
-        const velocity = Math.min(0.25, (pt.luminance || 0.5) * 0.3);
+        // Pluck envelope: quick attack, clear audible pluck decay
+        const velocity = Math.min(0.4, Math.max(0.12, (pt.luminance || 0.5) * 0.8));
         gain.gain.setValueAtTime(0, now);
         gain.gain.linearRampToValueAtTime(velocity, now + 0.005);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.25);
 
         let lastNode = gain;
         osc.connect(gain);
@@ -83,7 +83,7 @@ export const nightLightsPersonality = {
         }
 
         osc.start(now);
-        osc.stop(now + 0.2);
+        osc.stop(now + 0.28);
       }
     });
   }

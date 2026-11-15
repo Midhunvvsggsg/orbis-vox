@@ -265,6 +265,9 @@ export class AudioEngine {
   play() {
     if (!this.currentTrack) return;
     this.isPlaying = true;
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume().catch(() => {});
+    }
     const intervalMs = 50;
     if (this.timerId) clearInterval(this.timerId);
 
@@ -343,6 +346,9 @@ export class AudioEngine {
    */
   checkSweepTrigger() {
     if (!this.isPlaying || !this.ctx || this.isMuted) return;
+    if (this.ctx.state === 'suspended') {
+      this.ctx.resume().catch(() => {});
+    }
     const currentCol = Math.floor(this.progress * 32);
     if (currentCol !== this.lastTriggeredCol && currentCol >= 0 && currentCol < 32) {
       this.lastTriggeredCol = currentCol;
@@ -372,18 +378,24 @@ export class AudioEngine {
       const colWidth = 1 / 32;
       const colLeft = colIndex * colWidth;
       const colRight = colLeft + colWidth;
-      const matchingBlobs = blobs.filter(b => b.x >= colLeft && b.x < colRight);
+      let matchingBlobs = blobs.filter(b => b.x >= colLeft && b.x < colRight);
+      if (matchingBlobs.length === 0 && this.frameData?.columnData?.[colIndex]) {
+        const brightPts = this.frameData.columnData[colIndex].points?.filter(p => p.luminance > 0.12) || [];
+        if (brightPts.length > 0) {
+          matchingBlobs = brightPts.map(p => ({ x: (colLeft + colRight) / 2, y: p.y, brightness: p.luminance }));
+        }
+      }
       if (matchingBlobs.length > 0) {
         lightningPersonality.triggerBlobs(this.ctx, this.masterFilter, matchingBlobs);
       }
     } else if (personality === 'currents') {
-      if (colIndex % 8 === 0) {
+      if (colIndex % 4 === 0) {
         const hue = this.frameData?.meanHue ?? 200;
         const diff = this.frameData?.frameDiff ?? 0.1;
         currentsPersonality.modulatePad(this.ctx, this.masterFilter, hue, diff);
       }
     } else if (personality === 'co2') {
-      if (colIndex % 8 === 0) {
+      if (colIndex % 4 === 0) {
         const brightness = this.frameData?.meanBrightness ?? 0.3;
         co2Personality.playTensionChord(this.ctx, this.masterFilter, brightness);
       }

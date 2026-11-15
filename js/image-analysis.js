@@ -149,7 +149,7 @@ export function analyzeFrame(imageElement) {
       for (let by = Math.floor(stepY / 2); by < sampleH; by += stepY) {
         const pIdx = (by * sampleW + bx) * 4;
         const bLum = (data[pIdx] * 0.2126 + data[pIdx + 1] * 0.7152 + data[pIdx + 2] * 0.0722) / 255;
-        if (bLum > 0.35) {
+        if (bLum > 0.15) {
           candidateBlobs.push({
             x: bx / sampleW,
             y: by / sampleH,

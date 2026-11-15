@@ -65,7 +65,7 @@ export const co2Personality = {
       osc.frequency.setValueAtTime(freq, now);
 
       gain.gain.setValueAtTime(0, now);
-      gain.gain.linearRampToValueAtTime(0.06 / Math.sqrt(freqs.length), now + 0.4);
+      gain.gain.linearRampToValueAtTime(0.18 / Math.sqrt(freqs.length), now + 0.3);
       gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.8);
 
       let lastNode = gain;
