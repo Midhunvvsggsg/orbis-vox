@@ -371,6 +371,14 @@ export class OrbisVoxApp {
     });
 
     // About modal
+    const closeModal = () => {
+      if (this.aboutModal) {
+        this.aboutModal.hidden = true;
+        this.aboutBtn?.setAttribute('aria-expanded', 'false');
+        this.aboutBtn?.focus();
+      }
+    };
+
     this.aboutBtn?.addEventListener('click', () => {
       if (this.aboutModal) {
         this.aboutModal.hidden = false;
@@ -379,11 +387,11 @@ export class OrbisVoxApp {
       }
     });
 
-    this.modalClose?.addEventListener('click', () => {
-      if (this.aboutModal) {
-        this.aboutModal.hidden = true;
-        this.aboutBtn.setAttribute('aria-expanded', 'false');
-        this.aboutBtn?.focus();
+    this.modalClose?.addEventListener('click', closeModal);
+    document.querySelector('.modal-backdrop')?.addEventListener('click', closeModal);
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.aboutModal && !this.aboutModal.hidden) {
+        closeModal();
       }
     });
   }
