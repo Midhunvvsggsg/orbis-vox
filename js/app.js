@@ -145,6 +145,20 @@ export class OrbisVoxApp {
     // Load active frame
     await this.loadCurrentFrame();
 
+    // Preload remaining frames for smooth time-series animation
+    if (track.frames && track.frames.length) {
+      setTimeout(() => {
+        track.frames.forEach((url) => {
+          if (!this.loadedImages.has(url)) {
+            const preImg = new Image();
+            preImg.crossOrigin = 'anonymous';
+            preImg.src = url;
+            this.loadedImages.set(url, preImg);
+          }
+        });
+      }, 50);
+    }
+
     announceLive(`Selected record: ${track.title}. ${track.mappingCard.whatYouSee}`);
   }
 
@@ -254,6 +268,16 @@ export class OrbisVoxApp {
         const secs = Math.floor(currentTime);
         const frac = Math.floor((currentTime % 1) * 10);
         this.scrubberTime.textContent = `0:${secs < 10 ? '0' : ''}${secs}.${frac} / 0:14.0`;
+      }
+
+      // Advance time-series frames in sync with playback progress
+      const track = this.tracks[this.currentTrackIndex];
+      if (track && track.frames && track.frames.length > 1) {
+        const targetFrame = Math.min(track.frames.length - 1, Math.floor(progress * track.frames.length));
+        if (targetFrame !== this.currentFrameIndex) {
+          this.currentFrameIndex = targetFrame;
+          this.loadCurrentFrame();
+        }
       }
     });
   }
