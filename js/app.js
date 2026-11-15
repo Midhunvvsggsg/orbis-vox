@@ -280,6 +280,35 @@ export class OrbisVoxApp {
         }
       }
     });
+
+    // Initialize 32 real-time audio spectrum equalizer bars
+    const spectrumContainer = document.getElementById('spectrum-bars');
+    if (spectrumContainer) {
+      spectrumContainer.innerHTML = '';
+      for (let i = 0; i < 32; i++) {
+        const bar = document.createElement('div');
+        bar.className = 'spectrum-bar';
+        spectrumContainer.appendChild(bar);
+      }
+      const bars = spectrumContainer.children;
+      const dataArr = new Uint8Array(32);
+
+      const renderSpectrum = () => {
+        if (this.audioEngine.analyser && this.audioEngine.isPlaying && !this.audioEngine.isMuted) {
+          this.audioEngine.analyser.getByteFrequencyData(dataArr);
+          for (let i = 0; i < 32; i++) {
+            const h = Math.max(3, (dataArr[i] / 255) * 26);
+            if (bars[i]) bars[i].style.height = `${h}px`;
+          }
+        } else {
+          for (let i = 0; i < 32; i++) {
+            if (bars[i]) bars[i].style.height = '3px';
+          }
+        }
+        requestAnimationFrame(renderSpectrum);
+      };
+      requestAnimationFrame(renderSpectrum);
+    }
   }
 
   setupEventListeners() {

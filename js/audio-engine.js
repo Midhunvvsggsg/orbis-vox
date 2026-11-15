@@ -78,6 +78,7 @@ export class AudioEngine {
     this.masterGain = null;
     this.masterFilter = null;
     this.limiter = null;
+    this.analyser = null;
     this.currentTrack = null;
     this.frameData = null;
     this.isPlaying = false;
@@ -124,6 +125,13 @@ export class AudioEngine {
       this.masterFilter.connect(this.limiter);
       this.limiter.connect(this.masterGain);
       this.masterGain.connect(this.ctx.destination);
+
+      // Real-time Analyser for visual spectrum bars
+      if (this.ctx.createAnalyser) {
+        this.analyser = this.ctx.createAnalyser();
+        this.analyser.fftSize = 64;
+        this.masterGain.connect(this.analyser);
+      }
     }
 
     if (this.ctx.state === 'suspended') {
