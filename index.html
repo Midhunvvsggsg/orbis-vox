@@ -1,0 +1,200 @@
+<!-- Generated with AI assistance (Google Antigravity). Reviewed by the team. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ORBIS VOX: The Earth Jukebox. Live, musical sonification of authentic NASA Earth Information Center visualization data.">
+  <title>ORBIS VOX — The Earth Jukebox</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner" class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <h1 class="site-title">ORBIS VOX</h1>
+        <p class="site-tagline">The Earth Jukebox — Hear the planet</p>
+      </div>
+      <div class="header-actions">
+        <button id="btn-about" class="btn btn-secondary" aria-haspopup="dialog" aria-expanded="false">
+          About &amp; Guide
+        </button>
+        <button id="btn-listen-only" class="btn btn-secondary" aria-pressed="false">
+          Listen-Only Mode
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav role="navigation" aria-label="Jukebox Tracks" class="record-shelf-nav">
+    <div class="shelf-container">
+      <h2 class="sr-only">Record Crate</h2>
+      <div id="track-list" class="track-shelf" role="tablist" aria-label="Earth Observation Records">
+        <!-- Dynamically rendered track records -->
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content" role="main" class="main-layout">
+    <!-- Active Stage / Turntable Visualizer -->
+    <section class="stage-section" aria-label="Visualizer Stage">
+      <div class="canvas-wrapper" id="canvas-container">
+        <canvas id="visualizer-canvas" width="1600" height="900" aria-label="Current NASA visualization frame" role="img"></canvas>
+        <div id="playhead-line" class="playhead" aria-hidden="true"></div>
+        <div id="probe-marker" class="probe-cursor" aria-hidden="true" hidden></div>
+      </div>
+
+      <!-- Visible Visual Description -->
+      <section class="frame-description-block" aria-label="Frame Description">
+        <h3 class="sr-only">Visual Frame Details</h3>
+        <p id="frame-desc-text" class="frame-description">Loading NASA Earth observation data...</p>
+        <p id="frame-stats-text" class="frame-stats" aria-label="Automated pixel statistics"></p>
+      </section>
+
+      <!-- Player Transport Controls -->
+      <div class="transport-controls" role="region" aria-label="Playback Controls">
+        <div class="primary-controls">
+          <button id="btn-prev" class="btn btn-control" aria-label="Previous record (Shortcut: P)">
+            <span aria-hidden="true">&#9664;&#9664;</span> Prev
+          </button>
+          <button id="btn-play-pause" class="btn btn-primary" aria-label="Play soundscape (Shortcut: Space)">
+            <span id="play-pause-icon" aria-hidden="true">&#9654;</span>
+            <span id="play-pause-text">Play</span>
+          </button>
+          <button id="btn-next" class="btn btn-control" aria-label="Next record (Shortcut: N)">
+            Next <span aria-hidden="true">&#9654;&#9654;</span>
+          </button>
+        </div>
+
+        <div class="feature-controls">
+          <button id="btn-tour" class="btn btn-accent" aria-pressed="false">
+            Start 60s Tour
+          </button>
+          <button id="btn-explore" class="btn btn-secondary" aria-pressed="false" aria-label="Toggle Explore Probe (Shortcut: E)">
+            Explore Probe
+          </button>
+          <button id="btn-export-wav" class="btn btn-secondary" aria-label="Download Soundscape as 16-bit WAV">
+            Download WAV
+          </button>
+        </div>
+
+        <div class="scrubber-container">
+          <label for="time-scrubber" class="scrubber-label">Timeline / Frame Scrub:</label>
+          <input type="range" id="time-scrubber" min="0" max="100" value="0" step="1" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Scrub sequence frames">
+          <span id="scrubber-time" class="scrubber-time" aria-hidden="true">0:00 / 0:14</span>
+        </div>
+
+        <div class="audio-settings">
+          <button id="btn-mute" class="btn btn-sm" aria-label="Mute audio (Shortcut: M)" aria-pressed="false">
+            Mute
+          </button>
+          <label for="volume-slider" class="sr-only">Volume</label>
+          <input type="range" id="volume-slider" min="0" max="100" value="80" step="5" aria-label="Master Volume">
+        </div>
+      </div>
+    </section>
+
+    <!-- Sidebar: Honest Mapping Card & Science Details -->
+    <aside class="sidebar-section" aria-label="Track Intelligence &amp; Science Mapping">
+      <section id="mapping-card-section" class="mapping-card" aria-labelledby="mapping-title">
+        <h2 id="mapping-title" class="mapping-heading">Honest Mapping Card</h2>
+        <div id="mapping-content">
+          <div class="mapping-item">
+            <strong>Source:</strong> <span id="map-source">NASA Earth Information Center / SVS</span>
+          </div>
+          <div class="mapping-item">
+            <strong>What you are seeing:</strong>
+            <p id="map-see">Observation details and spatial dynamics.</p>
+          </div>
+          <div class="mapping-item">
+            <strong>How it sounds:</strong>
+            <p id="map-sound">Musical sonification rules and voice behaviors.</p>
+          </div>
+          <div class="mapping-item">
+            <strong>Scale &amp; Tempo:</strong>
+            <p id="map-scale">Discrete quantized scale and dynamic tempo.</p>
+          </div>
+          <div class="mapping-item warning-item">
+            <strong>Honesty &amp; Limits:</strong>
+            <p id="map-limits">Sonifies rendered RGB pixel luminance and color spectrum, not calibrated raw model units.</p>
+          </div>
+        </div>
+
+        <!-- Legend Display -->
+        <div id="legend-container" class="legend-box" hidden>
+          <h3 class="legend-title">Color Scale Reference</h3>
+          <img id="track-legend-img" src="" alt="Authentic NASA color scale legend" class="legend-image">
+        </div>
+      </section>
+
+      <!-- Keyboard Shortcuts Reference -->
+      <section class="shortcuts-card" aria-label="Keyboard Shortcuts Reference">
+        <h3>Keyboard Navigation</h3>
+        <table class="shortcuts-table">
+          <thead>
+            <tr>
+              <th scope="col">Key</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><kbd>Space</kbd></td><td>Play / Pause audio sweep</td></tr>
+            <tr><td><kbd>N</kbd> / <kbd>P</kbd></td><td>Next / Previous record</td></tr>
+            <tr><td><kbd>E</kbd></td><td>Toggle interactive Explore Probe</td></tr>
+            <tr><td><kbd>Arrow Keys</kbd></td><td>Move probe across canvas</td></tr>
+            <tr><td><kbd>M</kbd></td><td>Mute / Unmute audio</td></tr>
+            <tr><td><kbd>D</kbd></td><td>Announce frame description</td></tr>
+            <tr><td><kbd>+</kbd> / <kbd>-</kbd></td><td>Increase / Decrease volume</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </aside>
+  </main>
+
+  <!-- Captions / Live Status Banner for Tour Mode and Live Announcements -->
+  <div id="tour-caption-box" class="tour-captions" aria-live="assertive" hidden>
+    <p id="tour-caption-text"></p>
+  </div>
+
+  <!-- ARIA Live Polite Region for Screen Readers -->
+  <div id="aria-live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- About & Help Modal -->
+  <div id="about-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 id="modal-title">About ORBIS VOX</h2>
+        <button id="modal-close" class="btn btn-close" aria-label="Close about dialog">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h3>NASA Space Apps Challenge 2026: Earth Jukebox</h3>
+        <p>ORBIS VOX transforms authentic NASA Earth Information Center (EIC) and Scientific Visualization Studio (SVS) observations into accessible, live musical soundscapes synthesized directly in your browser.</p>
+        
+        <h4>Data Integrity &amp; Transparency</h4>
+        <p>All frames are authentic NASA SVS products. Sonification operates on rendered RGB pixel values, color hues, and spatial features to create distinct musical personalities.</p>
+
+        <h4>Accessibility First</h4>
+        <p>Designed for full keyboard operability, screen readers, WCAG 2.2 AA compliance, and sight-independent exploration through Listen-Only mode and probe sonification.</p>
+
+        <h4>Credits</h4>
+        <p>Created by the team for NASA Space Apps Challenge 2026. Data visualizations courtesy of NASA Scientific Visualization Studio.</p>
+
+        <p class="disclaimer"><em>Not affiliated with or endorsed by NASA.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <footer role="contentinfo" class="site-footer">
+    <div class="footer-container">
+      <p class="footer-credit">NASA Space Apps Challenge 2026 Entry &bull; Earth Jukebox</p>
+      <p class="footer-disclaimer">NASA data visualizations courtesy of NASA SVS. This project is not affiliated with or endorsed by NASA.</p>
+      <p class="footer-ai">Generated with AI assistance (Google Antigravity). Reviewed by the team.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+[
+  {
+    "id": "night-lights",
+    "title": "Night Lights: 2012–2023",
+    "subtitle": "Global Urban Illumination Dynamics",
+    "category": "Human Dimension",
+    "svsId": 5313,
+    "sourceUrl": "https://svs.gsfc.nasa.gov/5313/",
+    "credit": "NASA Scientific Visualization Studio. Visualizer: Kel Elkins. Scientists: Zhuosen Wang, Miguel Román, Ranjay Shrestha, Srija Chakraborty, Virginia Kalb.",
+    "legend": "assets/frames/night-lights/legend.jpg",
+    "frames": [
+      "assets/frames/night-lights/frame_001.jpg",
+      "assets/frames/night-lights/frame_002.jpg",
+      "assets/frames/night-lights/frame_003.jpg",
+      "assets/frames/night-lights/frame_004.jpg",
+      "assets/frames/night-lights/frame_005.jpg",
+      "assets/frames/night-lights/frame_006.jpg",
+      "assets/frames/night-lights/frame_007.jpg",
+      "assets/frames/night-lights/frame_008.jpg",
+      "assets/frames/night-lights/frame_009.jpg",
+      "assets/frames/night-lights/frame_010.jpg",
+      "assets/frames/night-lights/frame_011.jpg",
+      "assets/frames/night-lights/frame_012.jpg",
+      "assets/frames/night-lights/frame_013.jpg",
+      "assets/frames/night-lights/frame_014.jpg",
+      "assets/frames/night-lights/frame_015.jpg",
+      "assets/frames/night-lights/frame_016.jpg"
+    ],
+    "soundSpec": {
+      "scale": "A minor pentatonic",
+      "baseTempo": 80,
+      "personality": "night-lights"
+    },
+    "mappingCard": {
+      "source": "NASA EIC / SVS #5313 (VIIRS Day-Night Band)",
+      "whatYouSee": "Global flat map view of night lights from 2012 to 2023 transitioning into decadal change: purple areas indicate brightening cities and expanding electrification, while orange areas show dimmed lighting.",
+      "howItSounds": "A minor pentatonic plucked notes with stereo panning across longitude. Playback tempo accelerates dynamically as active lit area density increases.",
+      "scaleAndTempo": "A minor pentatonic (A, C, D, E, G), 70-130 BPM dynamic tempo.",
+      "limits": "Sonifies rendered RGB pixel luminance from visualization stills, not raw calibrated sensor radiance (nanowatt/cm²·sr)."
+    }
+  },
+  {
+    "id": "lightning",
+    "title": "ISS Lightning: 2017–2023",
+    "subtitle": "Global Tropical & Mid-Latitude Flash Events",
+    "category": "Atmospheric Dynamics",
+    "svsId": 5011,
+    "sourceUrl": "https://svs.gsfc.nasa.gov/5011/",
+    "credit": "NASA Scientific Visualization Studio. Visualizers: Michala Garrison, Greg Shirah, Kel Elkins, Alex Kekesi.",
+    "legend": null,
+    "frames": [
+      "assets/frames/lightning/frame_001.jpg",
+      "assets/frames/lightning/frame_002.jpg",
+      "assets/frames/lightning/frame_003.jpg",
+      "assets/frames/lightning/frame_004.jpg",
+      "assets/frames/lightning/frame_005.jpg",
+      "assets/frames/lightning/frame_006.jpg",
+      "assets/frames/lightning/frame_007.jpg",
+      "assets/frames/lightning/frame_008.jpg",
+      "assets/frames/lightning/frame_009.jpg",
+      "assets/frames/lightning/frame_010.jpg",
+      "assets/frames/lightning/frame_011.jpg",
+      "assets/frames/lightning/frame_012.jpg",
+      "assets/frames/lightning/frame_013.jpg",
+      "assets/frames/lightning/frame_014.jpg",
+      "assets/frames/lightning/frame_015.jpg",
+      "assets/frames/lightning/frame_016.jpg"
+    ],
+    "soundSpec": {
+      "scale": "D Dorian",
+      "baseTempo": 90,
+      "personality": "lightning"
+    },
+    "mappingCard": {
+      "source": "NASA EIC / SVS #5011 (ISS Lightning Imaging Sensor)",
+      "whatYouSee": "Global lightning strikes detected from the International Space Station over a 6-year period with a 10-day roving window highlighting seasonal storm migrations across equatorial belts.",
+      "howItSounds": "Percussive noise bursts and bright sine pings triggered by detected flash clusters; pitch mapped to latitude (blob Y) and pan mapped to longitude (blob X).",
+      "scaleAndTempo": "D Dorian mode (D, E, F, G, A, B, C), event-driven percussive timing.",
+      "limits": "Sonifies optical flash clusters from 10-day composite frames, not instant millisecond electrical discharges."
+    }
+  },
+  {
+    "id": "currents",
+    "title": "Ocean Currents: Western Boundary",
+    "subtitle": "Perpetual Ocean High-Resolution Flow",
+    "category": "Oceans & Circulation",
+    "svsId": 5425,
+    "sourceUrl": "https://svs.gsfc.nasa.gov/5425/",
+    "credit": "NASA Scientific Visualization Studio. Visualizers: Greg Shirah, Horace Mitchell. Technical Support: Laurence Schuler, Ian Jones. Scientists: Atousa Saberi, Josh Willis. Producer: Kathleen Gaeta.",
+    "legend": null,
+    "frames": [
+      "assets/frames/currents/frame_001.jpg",
+      "assets/frames/currents/frame_002.jpg",
+      "assets/frames/currents/frame_003.jpg",
+      "assets/frames/currents/frame_004.jpg",
+      "assets/frames/currents/frame_005.jpg",
+      "assets/frames/currents/frame_006.jpg",
+      "assets/frames/currents/frame_007.jpg",
+      "assets/frames/currents/frame_008.jpg",
+      "assets/frames/currents/frame_009.jpg",
+      "assets/frames/currents/frame_010.jpg",
+      "assets/frames/currents/frame_011.jpg",
+      "assets/frames/currents/frame_012.jpg",
+      "assets/frames/currents/frame_013.jpg",
+      "assets/frames/currents/frame_014.jpg",
+      "assets/frames/currents/frame_015.jpg",
+      "assets/frames/currents/frame_016.jpg"
+    ],
+    "soundSpec": {
+      "scale": "D Dorian",
+      "baseTempo": 75,
+      "personality": "currents"
+    },
+    "mappingCard": {
+      "source": "NASA EIC / SVS #5425 (ECCO2 Ocean Model Synthesis)",
+      "whatYouSee": "3D velocity field particle trails visualizing powerful western boundary currents (Kuroshio, Agulhas retroflection, Gulf Stream) and oceanic eddies.",
+      "howItSounds": "Four detuned triangle voices generating an evolving oceanic ambient chord; root frequency drifts with mean water hue, while flow velocity modulates LFO and filter sweeps.",
+      "scaleAndTempo": "D Dorian (D3, F3, A3, C4) ambient pad, 75 BPM flow modulation.",
+      "limits": "Sonifies rendered particle tracer velocity colors, not physical hydrographic temperature and salinity measurements."
+    }
+  },
+  {
+    "id": "co2",
+    "title": "Global CO2 Plume: 2020",
+    "subtitle": "DYAMOND Atmospheric Circulation & Emissions",
+    "category": "Climate & Carbon",
+    "svsId": 5196,
+    "sourceUrl": "https://svs.gsfc.nasa.gov/5196/",
+    "credit": "NASA Scientific Visualization Studio. Visualizers: AJ Christensen, Greg Shirah, Helen-Nicole Kostis, Mark SubbaRao. Technical Support: Laurence Schuler, Ian Jones. Scientists: Lesley Ott, Brad Weir, William Putman, Tomohiro Oda.",
+    "legend": "assets/frames/co2/legend.jpg",
+    "frames": [
+      "assets/frames/co2/frame_001.jpg",
+      "assets/frames/co2/frame_002.jpg",
+      "assets/frames/co2/frame_003.jpg",
+      "assets/frames/co2/frame_004.jpg",
+      "assets/frames/co2/frame_005.jpg",
+      "assets/frames/co2/frame_006.jpg",
+      "assets/frames/co2/frame_007.jpg",
+      "assets/frames/co2/frame_008.jpg",
+      "assets/frames/co2/frame_009.jpg",
+      "assets/frames/co2/frame_010.jpg",
+      "assets/frames/co2/frame_011.jpg",
+      "assets/frames/co2/frame_012.jpg",
+      "assets/frames/co2/frame_013.jpg",
+      "assets/frames/co2/frame_014.jpg",
+      "assets/frames/co2/frame_015.jpg",
+      "assets/frames/co2/frame_016.jpg"
+    ],
+    "soundSpec": {
+      "scale": "Dynamic Tension Chord",
+      "baseTempo": 84,
+      "personality": "co2"
+    },
+    "mappingCard": {
+      "source": "NASA EIC / SVS #5196 (GEOS Model / DYAMOND Simulation)",
+      "whatYouSee": "Global atmospheric carbon dioxide plumes swirling through weather patterns from January through March 2020, rising from industrial centers and fires.",
+      "howItSounds": "Dynamic harmonic chord tension: low concentrations produce a warm Major 7th chord; mid concentrations introduce a 9th; high concentrations inject minor 2nd and tritone dissonance.",
+      "scaleAndTempo": "Dynamic harmonic tension scale (Major 7th to Tritone dissonance), 84 BPM.",
+      "limits": "Sonifies rendered 3D point cloud opacity and color ramp, not direct atmospheric flask parts-per-million measurements."
+    }
+  }
+]

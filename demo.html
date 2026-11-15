@@ -1,0 +1,147 @@
+<!-- Generated with AI assistance (Google Antigravity). Reviewed by the team. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ORBIS VOX 30-Second Demo Video & Presentation. NASA International Space Apps Challenge 2026 entry by Team Infernos.">
+  <title>ORBIS VOX — 30-Second Demo &amp; Video Player</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .demo-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-md);
+    }
+    .demo-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-surface);
+      margin-bottom: var(--space-xl);
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #000;
+      border: 2px solid var(--border-medium);
+      aspect-ratio: 16 / 9;
+      margin: var(--space-lg) 0;
+    }
+    .video-wrapper video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    .spec-item {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+    }
+    .spec-item h4 {
+      margin: 0 0 var(--space-xs) 0;
+      font-size: var(--font-sm);
+      color: var(--accent-gold);
+    }
+    .spec-item p {
+      margin: 0;
+      font-size: var(--font-sm);
+      color: var(--text-secondary);
+    }
+    .cta-row {
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      margin-top: var(--space-xl);
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner" class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <h1 class="site-title">ORBIS VOX</h1>
+        <p class="site-tagline">The Earth Jukebox — 30-Second Demo &amp; Showcase</p>
+      </div>
+      <div class="header-actions">
+        <a href="index.html" class="btn btn-primary" role="button">Launch Live App</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" role="main" class="demo-container">
+    <article class="demo-card">
+      <h2>NASA Space Apps Challenge 2026: Official Demo</h2>
+      <p class="subtitle-text">
+        <strong>Team:</strong> Infernos &nbsp;|&nbsp;
+        <strong>Challenge:</strong> Earth Jukebox &nbsp;|&nbsp;
+        <strong>Duration:</strong> 28.5 seconds (NASA &le;30.0s Hard Cutoff Compliant)
+      </p>
+
+      <div class="video-wrapper">
+        <video controls playsinline preload="metadata" aria-label="ORBIS VOX 30-Second Demo Video with English narration and captions">
+          <source src="orbis-vox-demo-30s.mp4" type="video/mp4">
+          <track src="assets/subtitles.vtt" kind="subtitles" srclang="en" label="English" default>
+          <p>Your browser does not support HTML5 video. You can <a href="orbis-vox-demo-30s.mp4">download the demo video directly (MP4, 6.1 MB)</a>.</p>
+        </video>
+      </div>
+
+      <div class="specs-grid">
+        <div class="spec-item">
+          <h4>Video Duration</h4>
+          <p>28.50s (Verified &lt; 30.0s cutoff)</p>
+        </div>
+        <div class="spec-item">
+          <h4>Video Format</h4>
+          <p>1920&times;1080 @ 30fps (H.264/AAC)</p>
+        </div>
+        <div class="spec-item">
+          <h4>Audio Architecture</h4>
+          <p>Native Web Audio API, -6dB Limiter</p>
+        </div>
+        <div class="spec-item">
+          <h4>Accessibility</h4>
+          <p>WCAG 2.2 AA Compliant + WebVTT</p>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a href="index.html" class="btn btn-primary">Open Live Jukebox</a>
+        <a href="orbis-vox-demo-30s.mp4" download class="btn btn-secondary">Download Video (MP4)</a>
+        <a href="https://github.com/Midhunvvsggsg/orbis-vox" class="btn btn-secondary" target="_blank" rel="noopener">GitHub Repository</a>
+      </div>
+    </article>
+
+    <section class="demo-card">
+      <h3>Authentic NASA Scientific Visualization Studio Datasets</h3>
+      <p>ORBIS VOX sonifies authentic observation frames from the NASA Earth Information Center:</p>
+      <ul>
+        <li><strong>SVS #5313:</strong> Change in Night Lights between 2012 and 2023 (VIIRS Day-Night Band, Suomi NPP / NOAA-20 / NASA Black Marble). Plucked pentatonic synth.</li>
+        <li><strong>SVS #5011:</strong> Lightning Events Detected from the International Space Station (ISS LIS). D Dorian band-pass crackles and optical strike pings.</li>
+        <li><strong>SVS #5425:</strong> Perpetual Ocean 2: Western Boundary Currents (ECCO2 model, NASA JPL &amp; GSFC). Evolving ambient triangle chord pad with hue modulation.</li>
+        <li><strong>SVS #5196:</strong> DYAMOND Global Carbon Dioxide (GEOS atmospheric model, NASA GSFC). Dynamic harmonic tension engine scaling Major 7ths to minor 2nds and tritones.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer role="contentinfo" class="site-footer">
+    <div class="footer-container">
+      <p>Built for the <strong>NASA International Space Apps Challenge 2026</strong> &bull; Team Infernos</p>
+      <p class="ai-disclosure">Developed with AI assistance (Google Antigravity CLI). All sonification logic runs 100% client-side via native Web Audio API.</p>
+    </div>
+  </footer>
+</body>
+</html>

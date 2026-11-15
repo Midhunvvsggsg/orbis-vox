@@ -1,0 +1,10 @@
+# Hand-off documents containing tokens
+HANDOFF_EMERGENCY.md
+*.token
+.env
+.git-credentials
+
+# System & dependencies
+node_modules/
+.DS_Store
+Thumbs.db
